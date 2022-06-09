@@ -44,15 +44,15 @@ async function run() {
       let informations;
       if (type === "name") {
         informations = await informationCollection
-          .find({ name: { $regex: input } })
+          .find({ name: { $regex: input, $options: "i" } })
           .toArray();
       } else if (type === "position") {
         informations = await informationCollection
-          .find({ position: { $regex: input } })
+          .find({ position: { $regex: input, $options: "i" } })
           .toArray();
       } else {
         informations = await informationCollection
-          .find({ office: { $regex: input } })
+          .find({ office: { $regex: input, $options: "i" } })
           .toArray();
       }
       res.send({ informations });
@@ -68,21 +68,21 @@ async function run() {
 
       if (type === "name") {
         informations = await informationCollection
-          .find({ name: { $regex: input } })
+          .find({ name: { $regex: input, $options: "i" } })
           .sort(mysort)
           .skip(page * count)
           .limit(count)
           .toArray();
       } else if (type === "position") {
         informations = await informationCollection
-          .find({ position: { $regex: input } })
+          .find({ position: { $regex: input, $options: "i" } })
           .sort(mysort)
           .skip(page * count)
           .limit(count)
           .toArray();
       } else {
         informations = await informationCollection
-          .find({ office: { $regex: input } })
+          .find({ office: { $regex: input, $options: "i" } })
           .sort(mysort)
           .skip(page * count)
           .limit(count)
